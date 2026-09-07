@@ -5,59 +5,113 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="onClickNumero"
     tools:context=".MainActivity">
 
+    <!-- ============================ VISOR ============================ -->
     <TextView
         android:id="@+id/tvVisor"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@android:color/darker_gray"
-        android:textAlignment="textEnd"
-        android:text="1,23456789"
-        android:textSize="50sp"
         android:enabled="false"
+        android:maxLines="1"
+        android:textAlignment="textEnd"
+        android:text="0"
+        android:textSize="50sp"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="20sp"
+        app:autoSizeMaxTextSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <!-- autoSize faz o texto encolher sozinho quando o numero fica
+         comprido demais, evitando que o resultado seja cortado -->
 
+    <!-- ===================== LINHA 1: AC  BS  %  x2 ===================== -->
     <Button
         android:id="@+id/bAC"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="@android:color/holo_orange_dark"
         android:onClick="onClickAC"
-        android:textSize="28sp"
         android:padding="0dp"
-        android:text="AC"
+        android:text="@string/btn_ac"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toStartOf="@+id/bBackSpace"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvVisor" />
+    <!-- o chainStyle com atributo spread_inside vai distribuir
+         de modo uniforme as distancias entre os botoes da mesma linha,
+         respeitando a ancoragem superior do primeiro e os limites
+         esquerda e direita do primeiro e do ultimo botao da linha -->
 
-    <!-- Botoes 7 8 9 e X -->
-        <Button
-            android:id="@+id/b7"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/material_dynamic_neutral70"
-            android:onClick="onClickNumero"
-            android:text="7"
-            android:textSize="34sp"
-            app:layout_constraintEnd_toStartOf="@+id/b8"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bAC" />
-            <!-- o chainStyle com atributo spread_inside vai distribuir
-            de modo uniforme as distancias entre os botões da mesma linha,
-             respeitando a ancoragem superior do primeiro e os limites
-             esquerda e direta de b7 e bMult-->
+    <Button
+        android:id="@+id/bBackSpace"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:onClick="onClickBackSpace"
+        android:padding="0dp"
+        android:text="@string/btn_backspace"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toStartOf="@+id/bPorcento"
+        app:layout_constraintStart_toEndOf="@+id/bAC"
+        app:layout_constraintTop_toBottomOf="@+id/tvVisor" />
+
+    <Button
+        android:id="@+id/bPorcento"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:onClick="onClickOperacao"
+        android:padding="0dp"
+        android:text="@string/btn_porcento"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/bQuadrado"
+        app:layout_constraintStart_toEndOf="@+id/bBackSpace"
+        app:layout_constraintTop_toBottomOf="@+id/tvVisor" />
+    <!-- as duas operacoes especiais usam cor azul para se distinguirem -->
+
+    <Button
+        android:id="@+id/bQuadrado"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:onClick="onClickEspecialUnaria"
+        android:padding="0dp"
+        android:text="@string/btn_quadrado"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bPorcento"
+        app:layout_constraintTop_toBottomOf="@+id/tvVisor" />
+
+    <!-- ====================== LINHA 2: 7  8  9  / ====================== -->
+    <Button
+        android:id="@+id/b7"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/material_dynamic_neutral70"
+        android:onClick="onClickNumero"
+        android:text="@string/btn_7"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/b8"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bAC" />
 
     <Button
         android:id="@+id/b8"
@@ -66,7 +120,7 @@
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/material_dynamic_neutral70"
         android:onClick="onClickNumero"
-        android:text="8"
+        android:text="@string/btn_8"
         android:textSize="34sp"
         app:layout_constraintEnd_toStartOf="@+id/b9"
         app:layout_constraintStart_toEndOf="@+id/b7"
@@ -79,58 +133,223 @@
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/material_dynamic_neutral70"
         android:onClick="onClickNumero"
-        android:text="9"
+        android:text="@string/btn_9"
         android:textSize="34sp"
-        app:layout_constraintEnd_toStartOf="@+id/bMul"
+        app:layout_constraintEnd_toStartOf="@+id/bDiv"
         app:layout_constraintStart_toEndOf="@+id/b8"
         app:layout_constraintTop_toBottomOf="@+id/bAC" />
+
+    <Button
+        android:id="@+id/bDiv"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@android:color/holo_orange_light"
+        android:onClick="onClickOperacao"
+        android:padding="0dp"
+        android:text="@string/btn_divisao"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/b9"
+        app:layout_constraintTop_toBottomOf="@+id/bAC" />
+
+    <!-- ====================== LINHA 3: 4  5  6  x ====================== -->
+    <Button
+        android:id="@+id/b4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/material_dynamic_neutral70"
+        android:onClick="onClickNumero"
+        android:text="@string/btn_4"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/b5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b7" />
+
+    <Button
+        android:id="@+id/b5"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/material_dynamic_neutral70"
+        android:onClick="onClickNumero"
+        android:text="@string/btn_5"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/b6"
+        app:layout_constraintStart_toEndOf="@+id/b4"
+        app:layout_constraintTop_toBottomOf="@+id/b7" />
+
+    <Button
+        android:id="@+id/b6"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/material_dynamic_neutral70"
+        android:onClick="onClickNumero"
+        android:text="@string/btn_6"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/bMul"
+        app:layout_constraintStart_toEndOf="@+id/b5"
+        app:layout_constraintTop_toBottomOf="@+id/b7" />
 
     <Button
         android:id="@+id/bMul"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="@android:color/holo_orange_light"
         android:onClick="onClickOperacao"
         android:padding="0dp"
-        android:text="\u00D7"
+        android:text="@string/btn_multiplicacao"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/b9"
-        app:layout_constraintTop_toBottomOf="@+id/bAC" />
-        <!-- magical number \u00D7 -->
-        <!-- é o unicode do x de multiplicação
-         preferência pelo uso do strings.xml -->
+        app:layout_constraintStart_toEndOf="@+id/b6"
+        app:layout_constraintTop_toBottomOf="@+id/b7" />
+
+    <!-- ====================== LINHA 4: 1  2  3  - ====================== -->
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/material_dynamic_neutral70"
+        android:onClick="onClickNumero"
+        android:text="@string/btn_1"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/b2"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b4" />
 
     <Button
-        android:id="@+id/bIgual"
-        android:layout_width="160dp"
+        android:id="@+id/b2"
+        android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/material_dynamic_neutral70"
+        android:onClick="onClickNumero"
+        android:text="@string/btn_2"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/b3"
+        app:layout_constraintStart_toEndOf="@+id/b1"
+        app:layout_constraintTop_toBottomOf="@+id/b4" />
+
+    <Button
+        android:id="@+id/b3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/material_dynamic_neutral70"
+        android:onClick="onClickNumero"
+        android:text="@string/btn_3"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/bSub"
+        app:layout_constraintStart_toEndOf="@+id/b2"
+        app:layout_constraintTop_toBottomOf="@+id/b4" />
+
+    <Button
+        android:id="@+id/bSub"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@android:color/holo_orange_light"
+        android:onClick="onClickOperacao"
+        android:padding="0dp"
+        android:text="@string/btn_subtracao"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/b3"
+        app:layout_constraintTop_toBottomOf="@+id/b4" />
+
+    <!-- ==================== LINHA 5: +/-  0  ,  + ==================== -->
+    <Button
+        android:id="@+id/bSinal"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/material_dynamic_neutral70"
+        android:onClick="onClickSinal"
+        android:padding="0dp"
+        android:text="@string/btn_sinal"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toStartOf="@+id/b0"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b1" />
+
+    <Button
+        android:id="@+id/b0"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/material_dynamic_neutral70"
+        android:onClick="onClickNumero"
+        android:text="@string/btn_0"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/bVirgula"
+        app:layout_constraintStart_toEndOf="@+id/bSinal"
+        app:layout_constraintTop_toBottomOf="@+id/b1" />
+
+    <Button
+        android:id="@+id/bVirgula"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/material_dynamic_neutral70"
+        android:onClick="onClickVirgula"
+        android:padding="0dp"
+        android:text="@string/btn_virgula"
+        android:textSize="44sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/bSoma"
+        app:layout_constraintStart_toEndOf="@+id/b0"
+        app:layout_constraintTop_toBottomOf="@+id/b1" />
+
+    <Button
+        android:id="@+id/bSoma"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@android:color/holo_orange_light"
+        android:onClick="onClickOperacao"
+        android:padding="0dp"
+        android:text="@string/btn_soma"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bVirgula"
+        app:layout_constraintTop_toBottomOf="@+id/b1" />
+
+    <!-- ========================= LINHA 6: = ========================= -->
+    <Button
+        android:id="@+id/bIgual"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="@android:color/holo_orange_light"
         android:onClick="onClickIgual"
         android:padding="0dp"
         android:text="@string/btn_igual"
         android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/bBackSpace"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="30dp"
-        android:backgroundTint="@android:color/holo_orange_dark"
-        android:onClick="onClickBackSpace"
-        android:padding="0dp"
-        android:text="@string/btn_backspace"
-        android:textSize="46sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bSinal" />
+    <!-- largura 0dp com start e end ancorados no parent = "match_constraints",
+         ou seja, o botao estica para ocupar toda a largura disponivel -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

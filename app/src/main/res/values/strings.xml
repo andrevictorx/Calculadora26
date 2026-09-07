@@ -1,11 +1,34 @@
 <resources>
     <string name="app_name">Calc 26</string>
 
-    <!-- exemplo de uso para os elementos do botoes gráfico usando unicode -->
-    <string name="btn_igual">&#x003D;</string>
-    <string name="btn_backspace">&#x232B;</string>
+    <!-- Simbolos dos botoes em codigo Unicode, centralizados aqui para nao
+         haver texto "hardcoded" no layout (facilita traducao e manutencao) -->
+    <string name="btn_soma">&#x002B;</string>          <!-- + -->
+    <string name="btn_subtracao">&#x2212;</string>     <!-- - (menos matematico) -->
+    <string name="btn_multiplicacao">&#x00D7;</string> <!-- x -->
+    <string name="btn_divisao">&#x00F7;</string>       <!-- / -->
+    <string name="btn_igual">&#x003D;</string>         <!-- = -->
+    <string name="btn_virgula">&#x002C;</string>       <!-- , -->
+    <string name="btn_backspace">&#x232B;</string>     <!-- apagar -->
+    <string name="btn_sinal">&#x00B1;</string>         <!-- +/- -->
+    <string name="btn_ac">AC</string>
 
-    <!-- todas as strings deveriam estar por aqui para suporte linguistico sem
-    texto hardcoded, apenas um exemplo de uma msg de erro  -->
+    <!-- As duas operacoes especiais criadas pelo estudante -->
+    <string name="btn_porcento">&#x0025;</string>      <!-- % -->
+    <string name="btn_quadrado">x&#x00B2;</string>     <!-- x ao quadrado -->
+
+    <!-- Digitos: tambem como recurso, para nao restar texto fixo no layout -->
+    <string name="btn_0">0</string>
+    <string name="btn_1">1</string>
+    <string name="btn_2">2</string>
+    <string name="btn_3">3</string>
+    <string name="btn_4">4</string>
+    <string name="btn_5">5</string>
+    <string name="btn_6">6</string>
+    <string name="btn_7">7</string>
+    <string name="btn_8">8</string>
+    <string name="btn_9">9</string>
+
+    <!-- Mensagens de erro -->
     <string name="msg_erro_div_zero">Não posso dividir por zero</string>
 </resources>

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         // associando os atributos com os elementos da interface
         tvVisor = findViewById(R.id.tvVisor);
 
-        // chamando método para o reset inicial
+        // chamando metodo para o reset inicial
         resetAC();
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -48,10 +48,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // =================================================================
-    // MÉTODOS AUXILIARES (não são handlers de evento, são de uso interno)
-    // =================================================================
 
+    // MÉTODOS AUXILIARES
     public void resetAC() {
         strVisor = "0"; // valor de reset/inicial para o visor
         tvVisor.setText(strVisor);
@@ -61,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         op = ' '; // nenhuma operacao pendente
     }
 
-    // O visor trabalha com VIRGULA (padrao brasileiro), mas o Java só sabe
+    // O visor trabalha com VIRGULA, mas o Java só sabe
     // converter texto em número usando PONTO. Estes dois métodos fazem a
     // tradução nos dois sentidos, num lugar só.
     private float visorParaFloat() {
@@ -80,10 +78,7 @@ public class MainActivity extends AppCompatActivity {
         tvVisor.setText(strVisor);
     }
 
-    // =================================================================
-    // HANDLERS DE EVENTO (chamados pelo android:onClick do layout)
-    // =================================================================
-
+    // Gerenciando eventos
     public void onClickNumero(View view) {
         int id = view.getId(); // id terá a referencia do id da classe R
         String num = "";
@@ -133,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Botão +/- : operação unária que troca o sinal do que está no visor.
     // É feita por manipulação de string, sem mexer na máquina de estados,
-    // então funciona tanto durante a digitação quanto sobre um resultado.
+    // funciona tanto durante a digitação quanto sobre um resultado.
     public void onClickSinal(View view) {
         if (strVisor.startsWith("-")) {
             strVisor = strVisor.substring(1); // tira o sinal
@@ -142,16 +137,16 @@ public class MainActivity extends AppCompatActivity {
         }
         tvVisor.setText(strVisor);
     }
-
+    // botão AC limpar
     public void onClickAC(View view) {
         resetAC();
     }
-
+    // backspace para apagar
     public void onClickBackSpace(View view) {
         int tam = strVisor.length(); // comprimento da string
-        if (!strVisor.equals("0")) { // é diferente de 0
+        if (!strVisor.equals("0")) { // string é diferente de 0
             if (tam == 1) {
-                strVisor = "0"; // apagou o único elemento
+                strVisor = "0"; // apaga o único algarismo
                 estado = ESPERANDO_NUMERO;
             } else { // tem mais de 1 algarismo
                 strVisor = strVisor.substring(0, tam - 1);
@@ -179,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         estado = ESPERANDO_Y;    // indica que estamos recebendo o 2o. número
-        x = visorParaFloat();    // converte e guarda o 1o. número em x
+        x = visorParaFloat();    // converte e guarda o 1° número em x
         strVisor = "0";          // valor indicando que vai começar novo número
         tvVisor.setText(strVisor);
     }

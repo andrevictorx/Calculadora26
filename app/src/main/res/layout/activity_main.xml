@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="onClickNumero"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvVisor"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@android:color/darker_gray"
+        android:textAlignment="textEnd"
+        android:text="1,23456789"
+        android:textSize="50sp"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bAC"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:onClick="onClickAC"
+        android:textSize="28sp"
+        android:padding="0dp"
+        android:text="AC"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvVisor" />
+
+    <!-- Botoes 7 8 9 e X -->
+        <Button
+            android:id="@+id/b7"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/material_dynamic_neutral70"
+            android:onClick="onClickNumero"
+            android:text="7"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toStartOf="@+id/b8"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bAC" />
+            <!-- o chainStyle com atributo spread_inside vai distribuir
+            de modo uniforme as distancias entre os botões da mesma linha,
+             respeitando a ancoragem superior do primeiro e os limites
+             esquerda e direta de b7 e bMult-->
+
+    <Button
+        android:id="@+id/b8"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/material_dynamic_neutral70"
+        android:onClick="onClickNumero"
+        android:text="8"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/b9"
+        app:layout_constraintStart_toEndOf="@+id/b7"
+        app:layout_constraintTop_toBottomOf="@+id/bAC" />
+
+    <Button
+        android:id="@+id/b9"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/material_dynamic_neutral70"
+        android:onClick="onClickNumero"
+        android:text="9"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/bMul"
+        app:layout_constraintStart_toEndOf="@+id/b8"
+        app:layout_constraintTop_toBottomOf="@+id/bAC" />
+
+    <Button
+        android:id="@+id/bMul"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@android:color/holo_orange_light"
+        android:onClick="onClickOperacao"
+        android:padding="0dp"
+        android:text="\u00D7"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/b9"
+        app:layout_constraintTop_toBottomOf="@+id/bAC" />
+        <!-- magical number \u00D7 -->
+        <!-- é o unicode do x de multiplicação
+         preferência pelo uso do strings.xml -->
+
+    <Button
+        android:id="@+id/bIgual"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@android:color/holo_orange_light"
+        android:onClick="onClickIgual"
+        android:padding="0dp"
+        android:text="@string/btn_igual"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/bBackSpace"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:onClick="onClickBackSpace"
+        android:padding="0dp"
+        android:text="@string/btn_backspace"
+        android:textSize="46sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

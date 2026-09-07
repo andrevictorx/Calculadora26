@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Calc 26</string>
+
+    <!-- exemplo de uso para os elementos do botoes gráfico usando unicode -->
+    <string name="btn_igual">&#x003D;</string>
+    <string name="btn_backspace">&#x232B;</string>
+
+    <!-- todas as strings deveriam estar por aqui para suporte linguistico sem
+    texto hardcoded, apenas um exemplo de uma msg de erro  -->
+    <string name="msg_erro_div_zero">Não posso dividir por zero</string>
+</resources>

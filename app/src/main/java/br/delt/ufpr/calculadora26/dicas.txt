@@ -1,0 +1,38 @@
+Sobre Design e planejamento da UI dos apps:
+https://developer.android.com/design?hl=pt-br
+
+-----------------------------------------------
+Métodos de STRING uteis para manipular o VISOR:
+.contains
+.equals
+.substring
+.length
+Detalhamento na doc do Java:
+https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
+
+-----------------------------------------------
+Para os símbolos gráficos, usar código Unicode
+OU, melhor ainda, criar os ids no arquivo strings.xml
+
+Os principais símbolos de uma calculadora utilizam códigos Unicode que podem ser
+aplicados no arquivo strings.xml ou diretamente no código fonte Java.
+
+Exemplo:
+ Apagar (Backspace)
+ Código Unicode: U+232B
+ No strings.xml: &#x232B;
+ Inline Java: "\u232B"
+
+No arquivo strings.xml fica algo como:
+    <string name="btn_soma">&#x002B;</string>
+    <string name="btn_subtracao">&#x2212;</string>
+    <string name="btn_multiplicacao">&#x00D7;</string>
+    <string name="btn_divisao">&#x00F7;</string>
+    <string name="btn_igual">&#x003D;</string>
+    <string name="btn_ponto">&#x002E;</string>
+    <string name="btn_apagar">&#x232B;</string>
+
+Para usar esses textos nos botões do seu layout (activity_main.xml),
+basta referenciá-los normalmente:
+xmlandroid:text="@string/btn_multiplicacao"
+

@@ -55,7 +55,11 @@
          cada um aponta o topo para o anterior e a base para o proximo, e o
          ultimo se ancora no fundo da tela. Com isso o ConstraintLayout reparte
          o espaco sobrando em telas altas (como o Pixel 7) igualmente entre
-         as linhas, em vez de deixar tudo empilhado no topo -->
+         as linhas, em vez de deixar tudo empilhado no topo.
+         IMPORTANTE: so quem esta NA chain recebe esse espaco extra. Por isso
+         os outros 3 botoes de cada linha (ex.: b8, b9, bDiv) tambem ganham a
+         MESMA ancora de fundo do botao da coluna esquerda (aqui, bottom_toTopOf
+         b7) - senao eles ficariam alguns pixels mais acima, desalinhados -->
 
     <Button
         android:id="@+id/bBackSpace"
@@ -67,6 +71,7 @@
         android:padding="0dp"
         android:text="@string/btn_backspace"
         android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/b7"
         app:layout_constraintEnd_toStartOf="@+id/bPorcento"
         app:layout_constraintStart_toEndOf="@+id/bAC"
         app:layout_constraintTop_toBottomOf="@+id/tvVisor" />
@@ -82,6 +87,7 @@
         android:text="@string/btn_porcento"
         android:textSize="34sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/b7"
         app:layout_constraintEnd_toStartOf="@+id/bQuadrado"
         app:layout_constraintStart_toEndOf="@+id/bBackSpace"
         app:layout_constraintTop_toBottomOf="@+id/tvVisor" />
@@ -99,6 +105,7 @@
         android:text="@string/btn_quadrado"
         android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/b7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/bPorcento"
         app:layout_constraintTop_toBottomOf="@+id/tvVisor" />
@@ -129,6 +136,7 @@
         android:onClick="onClickNumero"
         android:text="@string/btn_8"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/b4"
         app:layout_constraintEnd_toStartOf="@+id/b9"
         app:layout_constraintStart_toEndOf="@+id/b7"
         app:layout_constraintTop_toBottomOf="@+id/bAC" />
@@ -142,6 +150,7 @@
         android:onClick="onClickNumero"
         android:text="@string/btn_9"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/b4"
         app:layout_constraintEnd_toStartOf="@+id/bDiv"
         app:layout_constraintStart_toEndOf="@+id/b8"
         app:layout_constraintTop_toBottomOf="@+id/bAC" />
@@ -158,6 +167,7 @@
         android:text="@string/btn_divisao"
         android:textSize="50sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/b4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/b9"
         app:layout_constraintTop_toBottomOf="@+id/bAC" />
@@ -188,6 +198,7 @@
         android:onClick="onClickNumero"
         android:text="@string/btn_5"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/b1"
         app:layout_constraintEnd_toStartOf="@+id/b6"
         app:layout_constraintStart_toEndOf="@+id/b4"
         app:layout_constraintTop_toBottomOf="@+id/b7" />
@@ -201,6 +212,7 @@
         android:onClick="onClickNumero"
         android:text="@string/btn_6"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/b1"
         app:layout_constraintEnd_toStartOf="@+id/bMul"
         app:layout_constraintStart_toEndOf="@+id/b5"
         app:layout_constraintTop_toBottomOf="@+id/b7" />
@@ -217,6 +229,7 @@
         android:text="@string/btn_multiplicacao"
         android:textSize="50sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/b1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/b6"
         app:layout_constraintTop_toBottomOf="@+id/b7" />
@@ -247,6 +260,7 @@
         android:onClick="onClickNumero"
         android:text="@string/btn_2"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/bSinal"
         app:layout_constraintEnd_toStartOf="@+id/b3"
         app:layout_constraintStart_toEndOf="@+id/b1"
         app:layout_constraintTop_toBottomOf="@+id/b4" />
@@ -260,6 +274,7 @@
         android:onClick="onClickNumero"
         android:text="@string/btn_3"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/bSinal"
         app:layout_constraintEnd_toStartOf="@+id/bSub"
         app:layout_constraintStart_toEndOf="@+id/b2"
         app:layout_constraintTop_toBottomOf="@+id/b4" />
@@ -276,6 +291,7 @@
         android:text="@string/btn_subtracao"
         android:textSize="50sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bSinal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/b3"
         app:layout_constraintTop_toBottomOf="@+id/b4" />
@@ -307,6 +323,7 @@
         android:onClick="onClickNumero"
         android:text="@string/btn_0"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/bIgual"
         app:layout_constraintEnd_toStartOf="@+id/bVirgula"
         app:layout_constraintStart_toEndOf="@+id/bSinal"
         app:layout_constraintTop_toBottomOf="@+id/b1" />
@@ -322,6 +339,7 @@
         android:text="@string/btn_virgula"
         android:textSize="44sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bIgual"
         app:layout_constraintEnd_toStartOf="@+id/bSoma"
         app:layout_constraintStart_toEndOf="@+id/b0"
         app:layout_constraintTop_toBottomOf="@+id/b1" />
@@ -338,6 +356,7 @@
         android:text="@string/btn_soma"
         android:textSize="50sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bIgual"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/bVirgula"
         app:layout_constraintTop_toBottomOf="@+id/b1" />

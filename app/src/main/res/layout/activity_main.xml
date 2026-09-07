@@ -42,6 +42,7 @@
         android:padding="0dp"
         android:text="@string/btn_ac"
         android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/b7"
         app:layout_constraintEnd_toStartOf="@+id/bBackSpace"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +51,11 @@
          de modo uniforme as distancias entre os botoes da mesma linha,
          respeitando a ancoragem superior do primeiro e os limites
          esquerda e direita do primeiro e do ultimo botao da linha -->
+    <!-- este botao tambem abre uma CHAIN VERTICAL (bAC-b7-b4-b1-bSinal-bIgual-fundo):
+         cada um aponta o topo para o anterior e a base para o proximo, e o
+         ultimo se ancora no fundo da tela. Com isso o ConstraintLayout reparte
+         o espaco sobrando em telas altas (como o Pixel 7) igualmente entre
+         as linhas, em vez de deixar tudo empilhado no topo -->
 
     <Button
         android:id="@+id/bBackSpace"
@@ -108,6 +114,7 @@
         android:onClick="onClickNumero"
         android:text="@string/btn_7"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/b4"
         app:layout_constraintEnd_toStartOf="@+id/b8"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
@@ -166,6 +173,7 @@
         android:onClick="onClickNumero"
         android:text="@string/btn_4"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/b1"
         app:layout_constraintEnd_toStartOf="@+id/b5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
@@ -224,6 +232,7 @@
         android:onClick="onClickNumero"
         android:text="@string/btn_1"
         android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/bSinal"
         app:layout_constraintEnd_toStartOf="@+id/b2"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
@@ -283,6 +292,7 @@
         android:padding="0dp"
         android:text="@string/btn_sinal"
         android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/bIgual"
         app:layout_constraintEnd_toStartOf="@+id/b0"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
@@ -340,16 +350,22 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="@android:color/holo_orange_light"
         android:onClick="onClickIgual"
         android:padding="0dp"
         android:text="@string/btn_igual"
         android:textSize="50sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bSinal" />
     <!-- largura 0dp com start e end ancorados no parent = "match_constraints",
-         ou seja, o botao estica para ocupar toda a largura disponivel -->
+         ou seja, o botao estica para ocupar toda a largura disponivel.
+         A ancora de fundo no parent fecha a chain vertical iniciada em bAC:
+         ela e o ultimo elo, entao o espaco sobrante e dividido entre TODOS
+         os elos da chain (o padrao "spread" quando nenhum chainStyle e
+         especificado), preenchendo a tela em vez de deixar vazio embaixo -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
